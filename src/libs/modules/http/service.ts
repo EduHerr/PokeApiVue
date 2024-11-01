@@ -6,9 +6,10 @@ import axios, {
   export class HttpService {
     private axiosConfig: AxiosInstance;
   
-    constructor() {
+    constructor(uri?: string) {
+      uri = !uri ? "https://pokeapi.co/api/v2/berry" : uri;
       this.axiosConfig = axios.create({
-        baseURL: "https://",
+        baseURL: uri,
         headers: {
           "Content-Type": "application/json",
         },
@@ -16,9 +17,9 @@ import axios, {
       });
     }
   
-    async get(uri: string): Promise<any> {
+    async get(): Promise<any> {
       try {
-        return await this.axiosConfig.get(uri);
+        return await this.axiosConfig.get("");
       } catch (e) {
         console.log(e);
         alert("Hubo un error al intentar realiar peticion http");

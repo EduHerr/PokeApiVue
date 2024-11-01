@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-x-auto">
+  <div class="overflow-x-auto max-w-full max-h-80"> <!-- Ajusta max-h-80 a la altura deseada -->
     <table class="min-w-full bg-white border border-gray-200">
       <thead>
         <tr class="bg-gray-100">
@@ -12,22 +12,7 @@
           </th>
         </tr>
       </thead>
-      <tbody v-if="data.length > 0">
-        <tr
-          v-for="(row, rowIndex) in data"
-          :key="rowIndex"
-          class="hover:bg-gray-50 transition-colors"
-        >
-          <td
-            v-for="(cell, cellIndex) in row"
-            :key="cellIndex"
-            class="px-6 py-4 border-b text-gray-700 text-sm"
-          >
-            {{ cell }}
-          </td>
-        </tr>
-      </tbody>
-      <tbody v-else>
+      <tbody v-if="data.length == 0">
         <tr>
           <td
             :colspan="headers.length"
@@ -36,6 +21,9 @@
             Sin registros
           </td>
         </tr>
+      </tbody>
+      <tbody v-else> <!-- Aquí también se permite el scroll -->
+        <slot></slot>
       </tbody>
     </table>
   </div>
