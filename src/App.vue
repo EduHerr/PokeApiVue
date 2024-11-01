@@ -1,4 +1,5 @@
 <template>
+  <h2>PokeApi Practice</h2>
   <div class="p-4 items-center justify-center">
     <div class="p-4 bg-white shadow-lg rounded-md">
       <TableCustom :headers="theads" :data="tableData">
